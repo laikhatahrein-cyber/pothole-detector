@@ -96,6 +96,13 @@ function detectPothole(event) {
 
 function updateDisplay() {
     counterDisplay.textContent = `Potholes Detected: ${potholeCount}`;
+    
+    // Add shake animation
+    document.body.classList.add('shake-animation');
+    // Remove the animation class after it completes to allow it to trigger again
+    setTimeout(() => {
+        document.body.classList.remove('shake-animation');
+    }, 500);
 }
 
 // Fallback for laptops without motion sensors
