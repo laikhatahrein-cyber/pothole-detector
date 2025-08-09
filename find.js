@@ -1,9 +1,8 @@
 let potholeCount = 0;
 let lastDetectionTime = 0;
 let detecting = false;
-const threshold = 20; // Increased sensitivity threshold for mobile
-const minGap = 1000; // Reduced time gap between detections
-let wakeLock = null; // For keeping the screen awake
+const threshold = 15; // m/s² sensitivity
+const minGap = 1500; // ms between detections
 
 // UI elements
 const counterDisplay = document.getElementById("counter");
@@ -11,11 +10,6 @@ const statusDisplay = document.getElementById("status");
 const startBtn = document.getElementById("startBtn");
 const stopBtn = document.getElementById("stopBtn");
 const resetBtn = document.getElementById("resetBtn");
-
-// Check if device has motion sensors
-const hasMotionSensors = () => {
-    return window.DeviceMotionEvent !== undefined;
-};
 
 // Load saved count
 if (localStorage.getItem("potholeCount")) {
@@ -59,48 +53,27 @@ resetBtn.addEventListener("click", () => {
     localStorage.setItem("potholeCount", potholeCount);
 });
 
-async function startDetection() {
+function startDetection() {
     detecting = true;
     statusDisplay.textContent = "Status: Detecting...";
-
-    // Keep screen awake on mobile devices
-    try {
-        if ('wakeLock' in navigator) {
-            wakeLock = await navigator.wakeLock.request('screen');
-        }
-    } catch (err) {
-        console.log('Wake Lock not supported');
-    }
-
-    // Start motion detection if available
-    if (hasMotionSensors()) {
-        window.addEventListener("devicemotion", detectPothole);
-        statusDisplay.textContent = "Status: Detecting using motion sensors...";
-    } else {
-        // Fallback to keyboard for desktop
-        document.addEventListener("keydown", handleSpacePress);
-        statusDisplay.textContent = "Status: Using keyboard (Press Space)";
-    }
+    window.addEventListener("devicemotion", detectPothole);
+    // Add keyboard event listener
+    document.addEventListener("keydown", handleSpacePress);
 }
 
 function stopDetection() {
     detecting = false;
     statusDisplay.textContent = "Status: Stopped";
-
-    // Release wake lock
-    if (wakeLock) {
-        wakeLock.release();
-        wakeLock = null;
-    }
-
-    // Remove all event listeners
     window.removeEventListener("devicemotion", detectPothole);
+    // Remove keyboard event listener
     document.removeEventListener("keydown", handleSpacePress);
 }
 
 function handleSpacePress(e) {
     if (detecting && e.code === "Space") {
-        registerPothole();
+        potholeCount++;
+        updateDisplay();
+        localStorage.setItem("potholeCount", potholeCount);
     }
 }
 
@@ -114,21 +87,11 @@ function detectPothole(event) {
 
     let currentTime = Date.now();
     if (totalAcc > threshold && (currentTime - lastDetectionTime) > minGap) {
-        registerPothole();
+        potholeCount++;
         lastDetectionTime = currentTime;
+        updateDisplay();
+        localStorage.setItem("potholeCount", potholeCount);
     }
-}
-
-function registerPothole() {
-    potholeCount++;
-    updateDisplay();
-    localStorage.setItem("potholeCount", potholeCount);
-    
-    // Visual feedback
-    statusDisplay.style.backgroundColor = '#ffeb3b';
-    setTimeout(() => {
-        statusDisplay.style.backgroundColor = '';
-    }, 200);
 }
 
 function updateDisplay() {
