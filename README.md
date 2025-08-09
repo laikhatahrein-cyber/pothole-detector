@@ -1,34 +1,33 @@
 <img width="3188" height="1202" alt="frame (3)" src="https://github.com/user-attachments/assets/517ad8e9-ad22-457d-9538-a9e62d137cd7" />
 
 
-# [Project Name] 🎯
+# [Project Name-Pothole Detector] 🎯
 
 
 ## Basic Details
-### Team Name: [Name]
+### Team Name: [Hackonauts]
 
 
 ### Team Members
-- Team Lead: [Name] - [College]
-- Member 2: [Name] - [College]
-- Member 3: [Name] - [College]
+- Member 1: [Hiba Nasrin.P] - [EMEA College]
+- Member 2: [Fathima Nidha.M] - [EMEA College]
 
 ### Project Description
-[2-3 lines about what your project does]
+[A browser-based web app that uses motion sensors to detect and count potholes in real time, helping raise road condition awareness. Future integration with route mapping could guide users to the smoothest, most convenient paths.]
 
 ### The Problem (that doesn't exist)
-[What ridiculous problem are you solving?]
+[Road travelers often face unexpected potholes, causing damage, discomfort, and delays, with no simple way to check road conditions in advance.]
 
 ### The Solution (that nobody asked for)
-[How are you solving it? Keep it fun!]
+[A web-based tool that detects potholes along a route and provides a mapped, safer, and smoother travel path.]
 
 ## Technical Details
 ### Technologies/Components Used
 For Software:
-- [Languages used]
+- [Languages used-html,css,js]
 - [Frameworks used]
 - [Libraries used]
-- [Tools used]
+- [Tools used-Git,VS Code]
 
 For Hardware:
 - [List main components]
@@ -97,3 +96,4 @@ Made with ❤️ at TinkerHub Useless Projects
 
 ![Static Badge](https://img.shields.io/badge/TinkerHub-24?color=%23000000&link=https%3A%2F%2Fwww.tinkerhub.org%2F)
 ![Static Badge](https://img.shields.io/badge/UselessProjects--25-25?link=https%3A%2F%2Fwww.tinkerhub.org%2Fevents%2FQ2Q1TQKX6Q%2FUseless%2520Projects)
+
