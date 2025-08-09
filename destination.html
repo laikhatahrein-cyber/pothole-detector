@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Destination Route Pit Counter</title>
+    <style>
+        body {
+            background: linear-gradient(120deg, #43cea2 0%, #185a9d 100%);
+            min-height: 100vh;
+            margin: 0;
+            font-family: 'Segoe UI', Arial, sans-serif;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .container {
+            background: rgba(255,255,255,0.95);
+            border-radius: 18px;
+            box-shadow: 0 8px 32px 0 rgba(24, 90, 157, 0.25);
+            padding: 40px 50px;
+            text-align: center;
+        }
+        h2 {
+            color: #185a9d;
+            margin-bottom: 1em;
+            font-size: 2em;
+            letter-spacing: 1px;
+        }
+        form {
+            display: flex;
+            flex-direction: column;
+            gap: 1.2em;
+        }
+        label {
+            font-size: 1.1em;
+            color: #333;
+            margin-bottom: 0.3em;
+            text-align: left;
+        }
+        input[type="text"] {
+            padding: 12px;
+            border-radius: 8px;
+            border: 1px solid #43cea2;
+            font-size: 1em;
+            outline: none;
+            transition: border 0.2s;
+        }
+        input[type="text"]:focus {
+            border: 1.5px solid #185a9d;
+        }
+        .btn {
+            background: linear-gradient(90deg, #43cea2, #185a9d);
+            color: #fff;
+            border: none;
+            border-radius: 25px;
+            padding: 12px 0;
+            font-size: 1.1em;
+            font-weight: bold;
+            cursor: pointer;
+            margin-top: 1em;
+            transition: background 0.3s;
+            box-shadow: 0 4px 16px rgba(67, 206, 162, 0.15);
+        }
+        .btn:hover {
+            background: linear-gradient(90deg, #185a9d, #43cea2);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Enter Your Journey Details</h2>
+        <form>
+            <div>
+                <label for="start">Starting Location</label>
+                <select id="start" name="start">
+                
+                    <option value="City A">Chelari</option>
+                    <option value="City B">Kondotty</option>
+                    <option value="City C">Calicut</option>
+                    <option value="City D">Vengara</option>
+                    <option value="City E">Kozhikode</option>
+                    <option value="City F">Malappuram</option>
+                    <option value="City G">Kottakkal</option>
+                    <option value="City H">Kuttippuram</option>
+                    <option value="City I">Perinthalmanna</option>
+                    <option value="City J">Karuvankallu
+
+                    </option>
+                
+            </div>
+            <div>
+                <label for="destination">Destination</label>
+                <select id="Destination" name="destination">
+                    <option value="" disabled selected><b>TO</b>  </option>
+            
+                    <option value="City A"><B><strong><span style="color:navy ;">EMEA COLLEGE</span></strong></B></option>
+                    
+                
+            </div>
+            <button type="submit" class="btn">Check</button>
+              </form>
+    </div>
+    <script>
+        // Simple form handler to show an alert with the entered locations
+        document.querySelector('form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const start = document.getElementById('start').value.trim();
+            const dest = document.getElementById('destination').value.trim();
+            if(start && dest) {
+                alert(`Starting Location: ${start}\nDestination: ${dest}`);
+            }
+        });
+    </script>
+</body>
+</html>
